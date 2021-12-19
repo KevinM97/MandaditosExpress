@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shop),
+            icon: Icon(Icons.shopping_cart_outlined),
             label: 'Mandado',
             backgroundColor: Colors.orange,
           ),
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline_rounded),
+            icon: Icon(Icons.chat_outlined),
             label: 'Opinión',
             backgroundColor: Colors.orange,
           ),
