@@ -29,8 +29,7 @@ class _ProductcardState extends State<Productcard> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           backgroundColor: Colors.orange)),
-                  content: Text(widget.model.precioPedido.toString() ??
-                      "Dolares fue el valor pagado"),
+                  content: Text(widget.model.precioPedido.toString()),
                   actions: [
                     FlatButton(
                         onPressed: () {

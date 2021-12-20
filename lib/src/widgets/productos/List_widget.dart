@@ -21,7 +21,9 @@ class _List_ProductState extends State<List_Product> {
     _downloadService();
   }
 
+  @override
   Widget build(BuildContext context) {
+    // ignore: unrelated_type_equality_checks
     return _listProduct == Null
         ? const Center(
             child: SizedBox(
