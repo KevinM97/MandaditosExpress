@@ -13,7 +13,7 @@ class List_Product extends StatefulWidget {
 
 class _List_ProductState extends State<List_Product> {
   final ProductService _productService = ProductService();
-  List<Producto>? _listProduct;
+  List<ProductosModel>? _listProduct;
 
   @override
   void initState() {

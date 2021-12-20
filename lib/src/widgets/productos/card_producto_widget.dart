@@ -3,7 +3,7 @@ import 'package:mandaditosexpress/src/models/productos_model.dart';
 
 class Productcard extends StatelessWidget {
   const Productcard({Key? key, required this.model}) : super(key: key);
-  final Producto model;
+  final ProductosModel model;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mandaditosexpress/src/pages/home_page.dart';
-import 'package:mandaditosexpress/src/widgets/login/login_widget.dart';
 import 'package:mandaditosexpress/src/widgets/productos/List_widget.dart';
 
 void main() {
