@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mandaditosexpress/src/widgets/productos/List_widget.dart';
+import 'package:mandaditosexpress/src/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const List_Product(),
+      home: const HomePage(),
     );
   }
 }
