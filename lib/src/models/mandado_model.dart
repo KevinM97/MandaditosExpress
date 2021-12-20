@@ -13,6 +13,7 @@ class Mandado {
         this.idMandado,
         this.idCliente,
         this.idPedido,
+        this.fechaMandado,
         this.precioMandado,
         this.direccionInicialMandado,
         this.direccionFinalMandado,
@@ -22,6 +23,7 @@ class Mandado {
     String? idMandado;
     String? idCliente;
     String? idPedido;
+    String? fechaMandado;
     double? precioMandado;
     String? direccionInicialMandado;
     String? direccionFinalMandado;
@@ -31,6 +33,7 @@ class Mandado {
         idMandado: json["id_mandado"],
         idCliente: json["id_cliente"],
         idPedido: json["id_pedido"],
+        fechaMandado: json["fecha_mandado"],
         precioMandado: json["precio_mandado"].toDouble(),
         direccionInicialMandado: json["direccionInicial_mandado"],
         direccionFinalMandado: json["direccionFinal_mandado"],
@@ -41,6 +44,7 @@ class Mandado {
         "id_mandado": idMandado,
         "id_cliente": idCliente,
         "id_pedido": idPedido,
+        "fecha_mandado" : fechaMandado,
         "precio_mandado": precioMandado,
         "direccionInicial_mandado": direccionInicialMandado,
         "direccionFinal_mandado": direccionFinalMandado,
