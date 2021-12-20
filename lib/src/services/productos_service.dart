@@ -5,7 +5,8 @@ import 'package:mandaditosexpress/src/models/productos_model.dart';
 
 class ProductService {
   ProductService();
-  final String _rootUrl = "https://apis-demo-65f4b.web.app/api/test6";
+  final String _rootUrl =
+      "https://mandaditos-express-backend-default-rtdb.firebaseio.com/mandados.json";
 
   Future<List<ProductosModel>> getProducto() async {
     List<ProductosModel> resultPreoduct = [];
@@ -15,7 +16,7 @@ class ProductService {
       if (response.body.isEmpty) return resultPreoduct;
 
       Map<String, dynamic> _request = json.decode(response.body);
-      List<dynamic> listProduct = _request["content"];
+      List<dynamic> listProduct = _request["productos"];
       //List<dynamic> listvaccines = json.decode(response.body);
 
       for (var item in listProduct) {

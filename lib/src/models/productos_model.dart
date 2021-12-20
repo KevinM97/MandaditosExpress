@@ -14,36 +14,21 @@ class ProductosModel {
     this.productos,
   });
 
-  ProductosClass? productos;
+  Map<String, Producto>? productos;
 
   factory ProductosModel.fromJson(Map<String, dynamic> json) => ProductosModel(
-        productos: ProductosClass.fromJson(json["productos"]),
+        productos: Map.from(json["productos"])
+            .map((k, v) => MapEntry<String, Producto>(k, Producto.fromJson(v))),
       );
 
   Map<String, dynamic> toJson() => {
-        "productos": productos!.toJson(),
+        "productos": Map.from(productos!)
+            .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
       };
 }
 
-class ProductosClass {
-  ProductosClass({
-    this.mrGaTixYNxI9LeNrwH,
-  });
-
-  MrGaTixYNxI9LeNrwH? mrGaTixYNxI9LeNrwH;
-
-  factory ProductosClass.fromJson(Map<String, dynamic> json) => ProductosClass(
-        mrGaTixYNxI9LeNrwH:
-            MrGaTixYNxI9LeNrwH.fromJson(json["-MrGaTixYNxI9Le_nrwH"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "-MrGaTixYNxI9Le_nrwH": mrGaTixYNxI9LeNrwH!.toJson(),
-      };
-}
-
-class MrGaTixYNxI9LeNrwH {
-  MrGaTixYNxI9LeNrwH({
+class Producto {
+  Producto({
     this.description,
     this.name,
     this.price,
@@ -55,8 +40,7 @@ class MrGaTixYNxI9LeNrwH {
   int? price;
   int? quantity;
 
-  factory MrGaTixYNxI9LeNrwH.fromJson(Map<String, dynamic> json) =>
-      MrGaTixYNxI9LeNrwH(
+  factory Producto.fromJson(Map<String, dynamic> json) => Producto(
         description: json["description"],
         name: json["name"],
         price: json["price"],

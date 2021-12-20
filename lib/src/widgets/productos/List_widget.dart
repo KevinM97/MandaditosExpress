@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:mandaditosexpress/src/models/Prueba.dart';
 import 'package:mandaditosexpress/src/models/productos_model.dart';
 import 'package:mandaditosexpress/src/services/productos_service.dart';
 
@@ -16,7 +13,7 @@ class List_Product extends StatefulWidget {
 
 class _List_ProductState extends State<List_Product> {
   final ProductService _productService = ProductService();
-  List<Content>? _listProduct;
+  List<Producto>? _listProduct;
 
   @override
   void initState() {
