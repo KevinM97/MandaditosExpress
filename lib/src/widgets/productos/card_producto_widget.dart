@@ -53,7 +53,6 @@ class _ProductcardState extends State<Productcard> {
       ),
     );
   }
-
   // _listaProductos(context, model) {
   //   showDialog(
   //       context: context,
