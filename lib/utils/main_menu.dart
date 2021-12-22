@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mandaditosexpress/src/widgets/Chat/chat_widget.dart';
-import 'package:mandaditosexpress/src/widgets/Mandado/mandado_widget.dart';
 import 'package:mandaditosexpress/src/widgets/Opinion/opinion_widget.dart';
 import 'package:mandaditosexpress/src/widgets/Usuario/usuario_widget.dart';
 import 'package:mandaditosexpress/src/widgets/productos/List_widget.dart';

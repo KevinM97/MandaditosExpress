@@ -1,8 +1,6 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:mandaditosexpress/src/models/productos_model.dart';
-import 'package:mandaditosexpress/src/services/productos_service.dart';
 
 class Productcard extends StatefulWidget {
   const Productcard({Key? key, required this.model}) : super(key: key);
@@ -14,8 +12,6 @@ class Productcard extends StatefulWidget {
 }
 
 class _ProductcardState extends State<Productcard> {
-  final ProductService _productService = ProductService();
-  List<ProductosModel>? _listProduct;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -25,26 +21,22 @@ class _ProductcardState extends State<Productcard> {
         showDialog(
             context: context,
             builder: (_) => AlertDialog(
-                  title: Text(widget.model.descripcionPedido ?? "",
-                      style: TextStyle(
+                  title: Text(widget.model.descripcionPedido,
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           backgroundColor: Colors.orange)),
                   content: Text(widget.model.precioPedido.toString()),
-                  actions: [
-                    FlatButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          "Cerrar",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ))
+                  actions: const [
+                    Text(
+                      "Cerrar",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ));
       },
       title: Text(
-        widget.model.descripcionPedido ?? "",
-        style: TextStyle(fontWeight: FontWeight.bold),
+        widget.model.descripcionPedido,
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       trailing: const Icon(
         Icons.arrow_drop_down,
@@ -53,7 +45,6 @@ class _ProductcardState extends State<Productcard> {
       ),
     );
   }
-
   // _listaProductos(context, model) {
   //   showDialog(
   //       context: context,

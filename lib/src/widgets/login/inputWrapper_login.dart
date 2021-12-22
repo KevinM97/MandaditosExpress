@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mandaditosexpress/src/widgets/login/inputField.dart';
+import 'package:mandaditosexpress/src/widgets/login/inputField_login.dart';
 import 'package:mandaditosexpress/src/widgets/login/button.dart';
 
 class InputWrapper extends StatelessWidget {
@@ -8,28 +8,28 @@ class InputWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
       child: Column(
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Container(
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            child: InputField(),
+            child: const InputField(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
-          Text(
+          const Text(
             "¿Has olvidado tu contraseña?",
             style: TextStyle(color: Colors.grey),
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
-          Button(),
+          const Button(),
         ],
       ),
     );
