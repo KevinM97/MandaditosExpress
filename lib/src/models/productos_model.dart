@@ -13,16 +13,16 @@ String productosModelToJson(List<ProductosModel> data) =>
 
 class ProductosModel {
   ProductosModel({
-    this.idPedido,
-    this.idCliente,
-    this.precioPedido,
-    this.descripcionPedido,
+    required this.idPedido,
+    required this.idCliente,
+    required this.precioPedido,
+    required this.descripcionPedido,
   });
 
-  String? idPedido;
-  int? idCliente;
-  double? precioPedido;
-  String? descripcionPedido;
+  String idPedido;
+  int idCliente;
+  double precioPedido;
+  String descripcionPedido;
 
   factory ProductosModel.fromJson(Map<String, dynamic> json) => ProductosModel(
         idPedido: json["idPedido"],
