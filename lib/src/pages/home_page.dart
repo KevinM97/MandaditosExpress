@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mandaditosexpress/providers/theme_provider.dart';
 import 'package:mandaditosexpress/utils/main_menu.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           title: Text(
             _options[_selectedIndex],
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           bottomOpacity: 0.0,
           elevation: 0.0,

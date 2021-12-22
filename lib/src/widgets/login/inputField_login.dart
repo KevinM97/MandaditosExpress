@@ -8,10 +8,10 @@ class InputField extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
               border: Border(bottom: BorderSide(color: Colors.grey))),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 hintText: "Enter your email",
                 hintStyle: TextStyle(color: Colors.grey),
@@ -19,10 +19,10 @@ class InputField extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
               border: Border(bottom: BorderSide(color: Colors.grey))),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 hintText: "Enter your password",
                 hintStyle: TextStyle(color: Colors.grey),

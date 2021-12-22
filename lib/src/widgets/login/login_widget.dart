@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mandaditosexpress/src/widgets/login/inputWrapper.dart';
+import 'package:mandaditosexpress/src/widgets/login/inputWrapper_login.dart';
 import 'package:mandaditosexpress/src/widgets/login/header.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,25 +10,25 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter, colors: [Colors.orange]),
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
-            Header(),
+            const Header(),
             Expanded(
                 child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(60),
                     topRight: Radius.circular(60),
                   )),
-              child: InputWrapper(),
+              child: const InputWrapper(),
             ))
           ],
         ),

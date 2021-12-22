@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mandaditosexpress/src/models/productos_model.dart';
 
@@ -29,7 +28,6 @@ class ProductService {
     } catch (ex) {
       return resultPreoduct;
       // ignore: avoid_print
-      print(ex);
     }
   }
 }
