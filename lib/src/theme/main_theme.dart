@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const Color colorMediumPriority = Colors.black;
-  static final Color colorHighPriority = Colors.red;
+  static Color get colorHighPriority => Colors.red;
   static final Color colorLowPriority = Colors.green.shade400;
 
   static final TextTheme textTheme = TextTheme(

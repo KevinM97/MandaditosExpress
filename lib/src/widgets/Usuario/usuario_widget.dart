@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mandaditosexpress/src/services/imagen_service.dart';
 import 'package:mandaditosexpress/src/widgets/Usuario/edit_info_widget.dart';
 import 'package:mandaditosexpress/src/widgets/Usuario/edit_pass_widget.dart';
+
+import 'edit_info_widget.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -15,14 +18,19 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  final Stream<QuerySnapshot> _cuentaStream = FirebaseFirestore.instance.collection("Cliente").snapshots();
   @override
   Widget build(BuildContext context) {
+    // return StreamBuilder<QuerySnapshot>(
+    //   stream: _cuentaStream,
+    //   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+
+    //   }
+    // )
     return Scaffold(
-      //backgroundColor: Colors.grey[200],
       body: Column(
         children: [
           Container(
-            //color: Colors.white,
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Column(
@@ -41,9 +49,14 @@ class _AccountPageState extends State<AccountPage> {
   }
 }
 
-class _Avatar extends StatelessWidget {
+class _Avatar extends StatefulWidget {
   const _Avatar({Key? key}) : super(key: key);
 
+  @override
+  State<_Avatar> createState() => _AvatarState();
+}
+
+class _AvatarState extends State<_Avatar> {
   @override
   Widget build(BuildContext context) {
     final _ButtonsState _act = _ButtonsState();
@@ -58,10 +71,15 @@ class _Avatar extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(100.0),
-            // child: FadeInImage(
-            //   placeholder: const AssetImage('assets/images/user.png'),
-            //   image: const AssetImage('assets/images/user.png'),
-            // ),
+            child: FadeInImage(
+            placeholder: const AssetImage('assets/images/user.png'),
+            image:
+              NetworkImage(_act.urlImagen),
+            fit: BoxFit.cover,
+            imageErrorBuilder: (_, __, ___) {
+            return Image.asset('assets/images/user.png');
+          },
+        ),
           ),
           Positioned(
             bottom: 0,
@@ -93,9 +111,14 @@ class _Avatar extends StatelessWidget {
   }
 }
 
-class _Name extends StatelessWidget {
+class _Name extends StatefulWidget {
   const _Name({Key? key}) : super(key: key);
 
+  @override
+  State<_Name> createState() => _NameState();
+}
+
+class _NameState extends State<_Name> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -110,7 +133,7 @@ class _Name extends StatelessWidget {
         ),
         SizedBox(height: 5.0),
         Text(
-          'kevinminey@email.com',
+          'km@email.com',
           style: TextStyle(color: Colors.grey),
         )
       ],
@@ -145,7 +168,10 @@ class _ButtonsState extends State<_Buttons> {
       // print('Fallo al escoger una imagen: $e');
     }
 
-    setState(() {});
+    if (mounted) {
+  setState(() {
+  });
+}
   }
 
   @override
@@ -168,8 +194,12 @@ class _ButtonsState extends State<_Buttons> {
               onTap: () {
                 Navigator.push(
                   context,
+<<<<<<< HEAD
                   MaterialPageRoute(
                       builder: (context) => const EditInfoWidget()),
+=======
+                  MaterialPageRoute(builder: (context) => const EditInfoWidget()),
+>>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
                 );
               }),
           const Divider(height: 0.0),
@@ -185,7 +215,7 @@ class _ButtonsState extends State<_Buttons> {
             },
           ),
           const Divider(height: 0.0),
-          const SizedBox(height: 100.0),
+          const SizedBox(height: 60.0),
           const Divider(height: 0.0),
           _renderButton(
             icon: Icons.power_settings_new,
@@ -228,6 +258,10 @@ class _ButtonsState extends State<_Buttons> {
     );
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
   void _editImg(BuildContext context) async {
     showDialog(
         context: context,
