@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     final mainProvider = Provider.of<MainProvider>(context, listen: true);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.deepOrange,
           centerTitle: true,
           title: Text(
             _options[_selectedIndex],
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: content_widget[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.deepOrange,
           onTap: (int index) {
             _selectedIndex = index;
             Colors.white;
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.white,
                   ),
                   label: e.label,
-                  backgroundColor: Colors.orange))
+                  backgroundColor: Colors.deepOrange))
               .toList(),
           currentIndex: _selectedIndex,
         ));

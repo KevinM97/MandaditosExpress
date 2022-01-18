@@ -15,7 +15,7 @@ class _ProductcardState extends State<Productcard> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      tileColor: Colors.orange,
+      tileColor: Colors.deepOrange,
       onTap: () {
         //this._listaProductos(context, widget.model.idPedido);
         showDialog(
@@ -23,8 +23,7 @@ class _ProductcardState extends State<Productcard> {
             builder: (_) => AlertDialog(
                   title: Text(widget.model.descripcionPedido,
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.orange)),
+                          fontWeight: FontWeight.bold)),
                   content: Text(widget.model.precioPedido.toString()),
                   actions: const [
                     Text(
