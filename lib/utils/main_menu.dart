@@ -19,7 +19,7 @@ List<MenuItem> menuOptions = [
 
 // ignore: non_constant_identifier_names
 List<Widget> content_widget = [
-  const UsuarioWidget(),
+  const AccountPage(),
   const ListProduct(),
   const ChatWidget(),
   const OpinionWidget()
