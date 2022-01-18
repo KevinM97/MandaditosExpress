@@ -23,26 +23,21 @@ class _ListProductState extends State<ListProduct> {
 
   @override
   Widget build(BuildContext context) {
-
     return _listProduct == null
         ? const Center(
             child: SizedBox(
                 height: 0.0, width: 0.0, child: CircularProgressIndicator()))
         : _listProduct!.isEmpty
-            ? const Center(
-                child:
-                    SizedBox(child: Text("No hay mandaditos")))
+            ? const Center(child: SizedBox(child: Text("No hay mandaditos")))
             : ListView(
-                children: _listProduct!
-                    .map((e) => Productcard(model: e))
-                    .toList());
+                children:
+                    _listProduct!.map((e) => Productcard(model: e)).toList());
   }
 
   _downloadService() async {
     _listProduct = await _productService.getProducto();
     if (mounted) {
-  setState(() {
-  });
-}
+      setState(() {});
+    }
   }
 }

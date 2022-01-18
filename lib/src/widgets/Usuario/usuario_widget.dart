@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mandaditosexpress/src/services/imagen_service.dart';
+import 'package:mandaditosexpress/src/widgets/Usuario/edit_info_widget.dart';
+import 'package:mandaditosexpress/src/widgets/Usuario/edit_pass_widget.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -24,15 +26,15 @@ class _AccountPageState extends State<AccountPage> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Column(
-              children: [
+              children: const [
                 _Avatar(),
                 SizedBox(height: 10.0),
                 _Name(),
               ],
             ),
           ),
-          SizedBox(height: 20.0),
-          _Buttons(),
+          const SizedBox(height: 20.0),
+          const _Buttons(),
         ],
       ),
     );
@@ -44,7 +46,6 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
     final _ButtonsState _act = _ButtonsState();
     return Container(
       height: 160.0,
@@ -98,8 +99,8 @@ class _Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const Text(
+      children: const [
+        Text(
           'Kevin Mina',
           style: TextStyle(
             fontSize: 17.0,
@@ -164,13 +165,24 @@ class _ButtonsState extends State<_Buttons> {
               icon: Icons.create_sharp,
               color: Colors.blue,
               text: 'Editar información',
-              onTap: () {}),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditInfoWidget()),
+                );
+              }),
           const Divider(height: 0.0),
           _renderButton(
             icon: Icons.lock,
             color: Colors.blueGrey,
             text: 'Cambiar Contraseña',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EditPassWidget()),
+              );
+            },
           ),
           const Divider(height: 0.0),
           const SizedBox(height: 100.0),
@@ -214,10 +226,6 @@ class _ButtonsState extends State<_Buttons> {
         size: 20.0,
       ),
     );
-  }
-
-  void _logOut(BuildContext context) async {
-    Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
   }
 
   void _editImg(BuildContext context) async {
