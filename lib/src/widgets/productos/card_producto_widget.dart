@@ -25,10 +25,13 @@ class _ProductcardState extends State<Productcard> {
                       style: const TextStyle(
                           fontWeight: FontWeight.bold)),
                   content: Text(widget.model.precioPedido.toString()),
-                  actions: const [
-                    Text(
-                      "Cerrar",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  actions: <Widget> [
+                    TextButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      child:
+                     const Text('Cerrar', style: TextStyle(color: Colors.black)),
                     )
                   ],
                 ));
