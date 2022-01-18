@@ -4,7 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mandaditosexpress/src/models/cliente_model.dart';
+import 'package:mandaditosexpress/src/providers/cliente_provider.dart';
+import 'package:mandaditosexpress/src/services/cliente_service.dart';
 import 'package:mandaditosexpress/src/services/imagen_service.dart';
+import 'package:provider/provider.dart';
 
 import 'edit_info_widget.dart';
 
@@ -16,7 +20,34 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+
+  final FotosService _fotosService = FotosService();
+  final ClienteService _clienteService = ClienteService();
+
   final Stream<QuerySnapshot> _cuentaStream = FirebaseFirestore.instance.collection("Cliente").snapshots();
+
+  Cliente? cliente = Cliente(nombreCliente: '',correoCliente: '',imgCliente: '');
+  File? image;
+  String urlImagen = '';
+
+  @override
+  void initState() {
+    super.initState();
+    //_downloadUsuario();
+  }
+  
+_downloadUsuario() async {
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
+    var uid = _userProvider.getUid;
+    cliente = await _clienteService.getCliente(uid!);
+    _userProvider.setNombre = cliente!.nombreCliente!;
+    urlImagen = cliente!.imgCliente!;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     // return StreamBuilder<QuerySnapshot>(
@@ -36,6 +67,8 @@ class _AccountPageState extends State<AccountPage> {
                 _Avatar(),
                 SizedBox(height: 10.0),
                 _Name(),
+                // ignore: avoid_print
+                // print(_clienteService.getCliente("cliente001"));
               ],
             ),
           ),

@@ -17,6 +17,7 @@ class Cliente {
         this.correoCliente,
         this.imgCliente,
         this.contrasea,
+        this.idU,
     });
 
     String? idCliente;
@@ -26,6 +27,8 @@ class Cliente {
     String? correoCliente;
     String? imgCliente;
     String? contrasea;
+    String? idU;
+    
 
     factory Cliente.fromJson(Map<String, dynamic> json) => Cliente(
         idCliente: json["id_cliente"],
