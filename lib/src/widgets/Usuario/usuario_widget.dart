@@ -13,16 +13,16 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      //backgroundColor: Colors.grey[200],
       body: Column(
-        children: [  Container(
-            color: Colors.white,
+        children: [
+          Container(
+            //color: Colors.white,
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 15.0),
+            padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Column(
               children: [
                 _Avatar(),
@@ -32,17 +32,20 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
           SizedBox(height: 20.0),
-          _Buttons(),],
-        ),
+          _Buttons(),
+        ],
+      ),
     );
   }
 }
+
 class _Avatar extends StatelessWidget {
   const _Avatar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
+    final color = Theme.of(context).colorScheme.primary;
+    final _ButtonsState _act = _ButtonsState();
     return Container(
       height: 160.0,
       width: 160.0,
@@ -50,12 +53,40 @@ class _Avatar extends StatelessWidget {
         border: Border.all(color: Theme.of(context).dividerColor),
         shape: BoxShape.circle,
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(100.0),
-        // child: FadeInImage(
-        //   placeholder: const AssetImage('assets/images/user.png'),
-        //   image: const AssetImage('assets/images/user.png'),
-        // ),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100.0),
+            // child: FadeInImage(
+            //   placeholder: const AssetImage('assets/images/user.png'),
+            //   image: const AssetImage('assets/images/user.png'),
+            // ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.white,
+                  ),
+                  color: Colors.deepOrange),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  _act._editImg(context);
+                },
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -66,10 +97,9 @@ class _Name extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
-        Text(
+        const Text(
           'Kevin Mina',
           style: TextStyle(
             fontSize: 17.0,
@@ -77,11 +107,16 @@ class _Name extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        SizedBox(height: 5.0)
+        SizedBox(height: 5.0),
+        Text(
+          'kevinminey@email.com',
+          style: TextStyle(color: Colors.grey),
+        )
       ],
     );
   }
 }
+
 class _Buttons extends StatefulWidget {
   const _Buttons({Key? key}) : super(key: key);
 
@@ -90,7 +125,7 @@ class _Buttons extends StatefulWidget {
 }
 
 class _ButtonsState extends State<_Buttons> {
-final FotosService _fotosService = FotosService();
+  final FotosService _fotosService = FotosService();
 
   File? image;
 
@@ -122,30 +157,29 @@ final FotosService _fotosService = FotosService();
             icon: Icons.history,
             color: Colors.amber[600]!,
             text: 'Historial de pedidos',
-            onTap: (){},
+            onTap: () {},
           ),
           const Divider(height: 0.0),
           _renderButton(
-            icon: Icons.create_sharp,
-            color: Colors.blue,
-            text: 'Editar información', onTap: () {  }
-            
-          ),
+              icon: Icons.create_sharp,
+              color: Colors.blue,
+              text: 'Editar información',
+              onTap: () {}),
           const Divider(height: 0.0),
           _renderButton(
-            icon: Icons.camera_alt,
+            icon: Icons.lock,
             color: Colors.blueGrey,
-            text: 'Editar foto de perfil', 
-            onTap: ()=> _editImg(context),
+            text: 'Cambiar Contraseña',
+            onTap: () {},
           ),
           const Divider(height: 0.0),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 100.0),
           const Divider(height: 0.0),
           _renderButton(
             icon: Icons.power_settings_new,
             color: Colors.red,
             text: 'Cerrar sesión',
-            onTap: (){},
+            onTap: () {},
           ),
         ],
       ),
@@ -186,8 +220,8 @@ final FotosService _fotosService = FotosService();
     Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
   }
 
- void _editImg(BuildContext context) async{
-        showDialog(
+  void _editImg(BuildContext context) async {
+    showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -198,25 +232,30 @@ final FotosService _fotosService = FotosService();
                 size: 24.0,
               ),
               TextButton(
-                onPressed: () async{
-                   await _selectImage(ImageSource.camera);
+                onPressed: () async {
+                  await _selectImage(ImageSource.camera);
                 },
-                child: const Text('Cámara'),
-              ),              
+                child: const Text(
+                  'Cámara',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
               TextButton(
-                onPressed: () async{
-                   await _selectImage(ImageSource.gallery);
+                onPressed: () async {
+                  await _selectImage(ImageSource.gallery);
                 },
-                child: const Text('Galería'),
+                child: const Text('Galería',
+                    style: TextStyle(color: Colors.black)),
               ),
               TextButton(
                 onPressed: () {
-                   Navigator.pop(context);
+                  Navigator.pop(context);
                 },
-                child: const Text('Cerrar'),
+                child:
+                    const Text('Cerrar', style: TextStyle(color: Colors.black)),
               )
             ],
           );
         });
- } 
+  }
 }

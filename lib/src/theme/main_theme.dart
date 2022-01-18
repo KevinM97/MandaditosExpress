@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color colorMediumPriority = Colors.yellow;
+  static const Color colorMediumPriority = Colors.black;
   static final Color colorHighPriority = Colors.red;
   static final Color colorLowPriority = Colors.green.shade400;
 
@@ -43,9 +43,9 @@ class AppTheme {
             unselectedLabelColor: Colors.grey,
             labelColor: ligthMode ? const Color(0xFF283593) : Colors.white),
         colorScheme: ColorScheme(
-            primary: const Color(0xFF283593),
+            primary: Colors.white,
             primaryVariant: const Color(0xFF1d87e5),
-            secondary: const Color(0xFFffee58),
+            secondary: Colors.black,
             secondaryVariant: const Color(0xFFc9bc1f),
             surface: Colors.white,
             background: Colors.grey,
