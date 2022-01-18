@@ -1,43 +1,31 @@
-<<<<<<< HEAD
-=======
-import 'package:cloud_firestore/cloud_firestore.dart';
->>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
 import 'package:flutter/material.dart';
 
-class EditInfoWidget extends StatefulWidget {
-  const EditInfoWidget({Key? key}) : super(key: key);
+class EditPassWidget extends StatefulWidget {
+  const EditPassWidget({Key? key}) : super(key: key);
 
   @override
-<<<<<<< HEAD
-  _EditInfoWidget createState() => _EditInfoWidget();
+  _EditPassWidgetState createState() => _EditPassWidgetState();
 }
 
-class _EditInfoWidget extends State<EditInfoWidget> {
+class _EditPassWidgetState extends State<EditPassWidget> {
   late TextEditingController textController1;
+  late bool passwordVisibility1;
   late TextEditingController textController2;
+  late bool passwordVisibility2;
   late TextEditingController textController3;
+  late bool passwordVisibility3;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-=======
-  _EditInfoWidgetState createState() => _EditInfoWidgetState();
-}
-
-class _EditInfoWidgetState extends State<EditInfoWidget> {
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  final Stream<QuerySnapshot> _editStream =
-  FirebaseFirestore.instance.collection('Cliente').snapshots();
->>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
 
   @override
   void initState() {
     super.initState();
     textController1 = TextEditingController();
+    passwordVisibility1 = false;
     textController2 = TextEditingController();
+    passwordVisibility2 = false;
     textController3 = TextEditingController();
+    passwordVisibility3 = false;
   }
 
   @override
@@ -46,7 +34,6 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
       key: formKey,
       child: Scaffold(
         key: scaffoldKey,
-<<<<<<< HEAD
         appBar: AppBar(
           backgroundColor: Colors.deepOrange,
           automaticallyImplyLeading: true,
@@ -61,7 +48,7 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
             ),
           ),
           title: const Text(
-            'Editar Informacion',
+            'Editar Contraseña',
             style: TextStyle(
               fontFamily: 'Poppins',
               color: Colors.black,
@@ -72,7 +59,6 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
           centerTitle: true,
           elevation: 4,
         ),
-        backgroundColor: const Color(0xFFF5F5F5),
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -91,9 +77,9 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               10, 0, 10, 10),
                           child: TextFormField(
                             controller: textController1,
-                            obscureText: false,
+                            obscureText: !passwordVisibility1,
                             decoration: InputDecoration(
-                              hintText: 'Nombre de usuario',
+                              hintText: 'Contraseña Actual',
                               hintStyle: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w200,
@@ -116,16 +102,27 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               contentPadding:
                                   const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
-                              prefixIcon: const Icon(
-                                Icons.person,
+                              suffixIcon: InkWell(
+                                onTap: () => setState(
+                                  () => passwordVisibility1 =
+                                      !passwordVisibility1,
+                                ),
+                                child: Icon(
+                                  passwordVisibility1
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: Color(0xFF757575),
+                                  size: 22,
+                                ),
                               ),
                             ),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w200,
                               fontStyle: FontStyle.italic,
                             ),
                             textAlign: TextAlign.start,
+                            keyboardType: TextInputType.visiblePassword,
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return 'Field is required';
@@ -140,9 +137,9 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               10, 10, 10, 10),
                           child: TextFormField(
                             controller: textController2,
-                            obscureText: false,
+                            obscureText: !passwordVisibility2,
                             decoration: InputDecoration(
-                              hintText: 'Nombre y Apellido',
+                              hintText: 'Nueva Contraseña',
                               hintStyle: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w200,
@@ -165,8 +162,18 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               contentPadding:
                                   const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
-                              prefixIcon: const Icon(
-                                Icons.person,
+                              suffixIcon: InkWell(
+                                onTap: () => setState(
+                                  () => passwordVisibility2 =
+                                      !passwordVisibility2,
+                                ),
+                                child: Icon(
+                                  passwordVisibility2
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: const Color(0xFF757575),
+                                  size: 22,
+                                ),
                               ),
                             ),
                             style: const TextStyle(
@@ -175,6 +182,7 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               fontStyle: FontStyle.italic,
                             ),
                             textAlign: TextAlign.start,
+                            keyboardType: TextInputType.visiblePassword,
                           ),
                         ),
                         Padding(
@@ -182,9 +190,9 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               10, 10, 10, 0),
                           child: TextFormField(
                             controller: textController3,
-                            obscureText: false,
+                            obscureText: !passwordVisibility3,
                             decoration: InputDecoration(
-                              hintText: 'Correo Electronico',
+                              hintText: 'Confirmar Contraseña',
                               hintStyle: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w200,
@@ -207,8 +215,18 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                               contentPadding:
                                   const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
-                              prefixIcon: const Icon(
-                                Icons.email_outlined,
+                              suffixIcon: InkWell(
+                                onTap: () => setState(
+                                  () => passwordVisibility3 =
+                                      !passwordVisibility3,
+                                ),
+                                child: Icon(
+                                  passwordVisibility3
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: const Color(0xFF757575),
+                                  size: 22,
+                                ),
                               ),
                             ),
                             style: const TextStyle(
@@ -242,179 +260,9 @@ class _EditInfoWidgetState extends State<EditInfoWidget> {
                 ),
               ),
             ],
-=======
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.vertical,
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    TextFormField(
-                      controller: textController1,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Nombre de Usuario',
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
-                        prefixIcon: const Icon(
-                          Icons.person,
-                        ),
-                      ),
-                      textAlign: TextAlign.start,
-                      validator: (val) {
-                        if (val!.isEmpty) {
-                          return 'Field is required';
-                        }
-
-                        return null;
-                      },
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: const [
-                    Divider(
-                      height: 30,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    TextFormField(
-                      controller: textController2,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Nombre y apellido',
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
-                        prefixIcon: const Icon(
-                          Icons.location_history_sharp,
-                        ),
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: const [
-                        Divider(
-                          height: 30,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        TextFormField(
-                          controller: textController3,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Correo electrónico',
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.black,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.black,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            contentPadding:
-                                const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        const Divider(
-                          height: 150,
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Center(
-                              child: _renderButton(
-                                text: 'Confirmar Cambios',
-                                color: Colors.blue,
-                                onTap: () {},
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
->>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
           ),
         ),
       ),
     );
   }
-<<<<<<< HEAD
-=======
-
-  Widget _renderButton({
-    required String text,
-    required Color color,
-    required Function() onTap,
-  }) {
-    return ListTile(
-      
-      onTap: onTap,
-      tileColor: Colors.deepOrange,
-      title: Text(text),
-    );
-  }
->>>>>>> db8ef9828f118bd082695b3713649df9f11208e2
 }

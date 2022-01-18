@@ -9,6 +9,8 @@ import 'package:mandaditosexpress/src/providers/cliente_provider.dart';
 import 'package:mandaditosexpress/src/services/cliente_service.dart';
 import 'package:mandaditosexpress/src/services/imagen_service.dart';
 import 'package:provider/provider.dart';
+import 'package:mandaditosexpress/src/widgets/Usuario/edit_info_widget.dart';
+import 'package:mandaditosexpress/src/widgets/Usuario/edit_pass_widget.dart';
 
 import 'edit_info_widget.dart';
 
@@ -233,7 +235,12 @@ class _ButtonsState extends State<_Buttons> {
             icon: Icons.lock,
             color: Colors.blueGrey,
             text: 'Cambiar Contraseña',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EditPassWidget()),
+              );
+            },
           ),
           const Divider(height: 0.0),
           const SizedBox(height: 60.0),
@@ -278,7 +285,6 @@ class _ButtonsState extends State<_Buttons> {
       ),
     );
   }
-
 
   void _editImg(BuildContext context) async {
     showDialog(
