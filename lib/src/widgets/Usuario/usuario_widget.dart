@@ -139,7 +139,7 @@ final FotosService _fotosService = FotosService();
             onTap: ()=> _editImg(context),
           ),
           const Divider(height: 0.0),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 50.0),
           const Divider(height: 0.0),
           _renderButton(
             icon: Icons.power_settings_new,
